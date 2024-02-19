@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from "react-native"
+import { StyleSheet, View, Text, ScrollView } from "react-native"
 import Total from "../components/Total";
 import Categories from "../components/Categories";
 import Expenses from "../components/Expenses";
@@ -6,11 +6,11 @@ import Expenses from "../components/Expenses";
 
 function MainScreen(){
     return(
-        <View>
+        <ScrollView>
             <Total/>
             <Categories/>
             <Expenses/>
-        </View>
+        </ScrollView>
     )
 
 } 

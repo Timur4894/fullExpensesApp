@@ -2,11 +2,14 @@ import { StyleSheet, View, Text } from "react-native"
 
 
 
-function Total({total}){
+function Total({ fetchedExpenses }){
+
+    //const totalAmount = fetchedExpenses.reduce((total, expense) => total + parseFloat(expense.amount), 0).toFixed(2);
+
     return(
         <View style={styles.container}>
-            <Text style={styles.monthText}>This month</Text>
-            <Text style={styles.total}>1000$</Text>
+            <Text style={styles.monthText}>Summary</Text>
+            <Text style={styles.total}>$2882</Text>
         </View>
     )
 
@@ -24,6 +27,7 @@ const styles = StyleSheet.create({
     },
     total: {
         fontSize: 50,
+        //color: 'black',
         fontWeight: 'bold'
     },
 });

@@ -9,6 +9,7 @@ import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import { Colors } from './constants/styles';
 import CategoryScreen from './screens/CategoryScreen';
+import ExpenseDetails from './screens/ExpenseDetails'
 
 
 
@@ -37,6 +38,7 @@ function AuthenticatedStack() {
           <Stack.Screen name="MainScreen" component={MainScreen} options={{ headerShown: false, title: 'Back' }} />
           <Stack.Screen name="CategoryDetails" component={CategoryDetailsScreen} options={{ title: 'Add Expense' }} />
           <Stack.Screen name="AllCategory" component={CategoryScreen} options={{ title: 'Change Categories' }} />
+          <Stack.Screen name="ChangeExpense" component={ExpenseDetails} options={{ title: 'Change Expense' }} />
       </Stack.Navigator>
   );
 }

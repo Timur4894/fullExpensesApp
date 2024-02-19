@@ -1,7 +1,7 @@
 export const Colors = {
-    primary100: '#f5f5f5',
-    primary500: '#cccccc',
-    primary800: '#333333',
-    error100: '#f5f5f5',
-    error500: '#cccccc',
-  }
+  primary100: '#e6f5e6', // Светло-зеленый
+  primary500: '#66cc66', // Зеленый
+  primary800: '#333333', // Темно-серый
+  error100: '#f5f5f5', // Светло-серый (оставляем без изменений)
+  error500: '#cccccc', // Серый (оставляем без изменений)
+};
