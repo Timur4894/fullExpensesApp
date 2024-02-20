@@ -4,13 +4,38 @@ import { StyleSheet, View, Text, Dimensions, Pressable } from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
-
 const { width } = Dimensions.get("window");
 
 function Categories (){
   const navigation = useNavigation();
 
-  const categories = ["Food", "Home", "Sport", "College", "Party", "Games"];
+  const categories = ["Food", "Housing", "Transport", "Health", "Enjoyment", "Other"];
+
+  // Функция для определения цвета кнопки в зависимости от категории
+  const getCategoryColor = (category) => {
+    switch (category) {
+      case "Food":
+        return "#7CFC00"; 
+      case "Housing":
+        return "#CD853F"; // пастельно-коричневый
+      case "Transport":
+        return "#6495ED"; // пастельно-синий
+      case "Health":
+        return "#F0FFFF"; // пастельно-белый
+      case "Enjoyment":
+        return "#DA70D6"; // пастельно-фиолетовый
+      case "Other":
+        return "#A9A9A9"; // пастельно-серый
+      default:
+        return "#ccc"; // по умолчанию серый
+    }
+  };
+
+  const getLighterColor = (color) => {
+    return `${color}99`; 
+  };
+
+  
 
   return (
     <View style={styles.container}>
@@ -19,26 +44,19 @@ function Categories (){
       <View style={styles.buttonContainer}>
         <View style={styles.column}>
           {categories.slice(0, 3).map((category, index) => (
-            <TouchableOpacity key={index} style={styles.button} onPress={() => navigation.navigate('CategoryDetails', { category: category })}>
+            <TouchableOpacity key={index} style={[styles.button, {borderColor: getCategoryColor(category), backgroundColor: getLighterColor(getCategoryColor(category))}]} onPress={() => navigation.navigate('CategoryDetails', { category: category })}>
               <Text style={styles.buttonText}>{category}</Text>
             </TouchableOpacity>
           ))}
         </View>
         <View style={styles.column}>
           {categories.slice(3).map((category, index) => (
-            <TouchableOpacity key={index} style={styles.button} onPress={() => navigation.navigate('CategoryDetails', { category: category })}>
+            <TouchableOpacity key={index} style={[styles.button, {borderColor: getCategoryColor(category), backgroundColor: getLighterColor(getCategoryColor(category))}]} onPress={() => navigation.navigate('CategoryDetails', { category: category })}>
               <Text style={styles.buttonText}>{category}</Text>
             </TouchableOpacity>
           ))}
         </View>
       </View>
-      <Pressable style={{
-        alignItems: 'center',
-      }} onPress={() => navigation.navigate('AllCategory')}>
-            <Text>
-              + Add categories
-            </Text>
-      </Pressable>
     </View>
   );
 };
@@ -52,6 +70,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontSize: 22,
     fontWeight: "bold",
+    color: 'white',
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -64,7 +83,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   button: {
-    backgroundColor: "#ccc",
     paddingVertical: 13,
     width: 160,
     paddingHorizontal: 30,
@@ -72,6 +90,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: "center",
+    borderWidth: 3, // Добавляем обводку
   },
   buttonText: {
     fontSize: 16,

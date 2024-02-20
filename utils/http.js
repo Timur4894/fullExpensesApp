@@ -19,10 +19,11 @@ export async function fetchExpenses(token) {
     const expenseObj = {
       id: key,
       amount: response.data[key].amount,
+      category: response.data[key].category,
       date: response.data[key].date, //new Date(response.data[key].date),
       description: response.data[key].description
     };
-    console.log('Date string:', response.data[key].date);
+    //console.log('Date string:', response.data[key].date);
     expenses.push(expenseObj);
   }
 

@@ -23,11 +23,12 @@ const styles = StyleSheet.create({
     monthText: {
         marginBottom: 10,
         fontSize: 17,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white',
     },
     total: {
         fontSize: 50,
-        //color: 'black',
+        color: 'white',
         fontWeight: 'bold'
     },
 });

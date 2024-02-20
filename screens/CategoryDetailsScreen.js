@@ -1,39 +1,35 @@
 import React, { useState, useContext } from "react";
 import { StyleSheet, View, Text, TextInput, Button } from "react-native";
-import { AuthContext } from '../store/auth-context'; // Импортируем контекст авторизации
-import { storeExpense } from '../utils/http'; // Импортируем функцию storeExpense
+import { AuthContext } from '../store/auth-context';
+import { storeExpense } from '../utils/http';
 
 function CategoryDetailsScreen({ route }) {
   const { category } = route.params;
-  const [amount, setAmount] = useState(''); // Состояние для суммы расхода
-  const [date, setDate] = useState(''); // Состояние для даты расхода
-  const [description, setDescription] = useState(''); // Состояние для описания расхода
-  const authContext = useContext(AuthContext); // Используем контекст авторизации
+  const [amount, setAmount] = useState('');
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10)); // Изначально устанавливаем текущую дату
+  const [description, setDescription] = useState('');
+  const authContext = useContext(AuthContext);
 
-  // Функция для отправки данных на сервер
   const submitExpense = async () => {
-    const token = authContext.token; // Получаем токен из контекста авторизации
+    const token = authContext.token;
     
-    const expenseData = { // Создаем объект с данными для расхода
-      //category: category,
+    const expenseData = {
+      category: category,
       amount: amount,
       date: date,
       description: description
     };
-
+    setAmount('');
+    setDescription('');
     try {
-      // Проверяем, авторизован ли пользователь
       if (!authContext.isAuthenticated) {
-        console.log("User is not logged in"); // Обработка случая, когда пользователь не авторизован
+        console.log("User is not logged in");
         return;
       }
 
-      const id = await storeExpense(token, expenseData); // Передаем токен и данные расхода в функцию storeExpense
-      console.log("Expense stored with id:", id);
-      // Добавьте здесь обработку успешного сохранения, например, переход на другой экран или отображение уведомления
+      const id = await storeExpense(token, expenseData);
     } catch (error) {
       console.error("Error storing expense:", error);
-      // Добавьте здесь обработку ошибки, например, отображение сообщения об ошибке пользователю
     }
   };
 
@@ -45,20 +41,20 @@ function CategoryDetailsScreen({ route }) {
         style={styles.input}
         placeholder="Enter amount..."
         value={amount}
-        onChangeText={(text) => setAmount(text)} // Обновляем состояние amount при изменении текста в поле ввода
+        onChangeText={(text) => setAmount(text)}
         keyboardType="numeric"
       /> 
       <TextInput
         style={styles.rowInput}
         placeholder="YYYY-MM-DD"
         value={date}
-        onChangeText={(text) => setDate(text)} // Обновляем состояние date при изменении текста в поле ввода
+        onChangeText={(text) => setDate(text)}
       />
       <TextInput
         style={styles.rowInput}
         placeholder="Title..."
         value={description}
-        onChangeText={(text) => setDescription(text)} // Обновляем состояние description при изменении текста в поле ввода
+        onChangeText={(text) => setDescription(text)}
         multiline
       />
 
@@ -66,11 +62,12 @@ function CategoryDetailsScreen({ route }) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
+    flex: 1,
+    backgroundColor: '#373970'
   },
   text: {
     marginTop: 20,
@@ -78,6 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     borderRadius: 5,
+    color: 'white',
     borderBottomColor: "#333",
     borderWidth: 2,
     width: 300,

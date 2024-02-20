@@ -6,7 +6,10 @@ import Expenses from "../components/Expenses";
 
 function MainScreen(){
     return(
-        <ScrollView>
+        <ScrollView style={{
+            backgroundColor: '#373970',
+            color: 'white',
+        }}>
             <Total/>
             <Categories/>
             <Expenses/>
@@ -15,9 +18,9 @@ function MainScreen(){
 
 } 
 
-const styles = StyleSheet.create({
+// const styles = StyleSheet.create({
     
-});
+// });
 
 
 export default MainScreen
