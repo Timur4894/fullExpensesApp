@@ -35,16 +35,16 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   label: {
-    color: 'white',
+    color: '#FF4900',
     marginBottom: 4,
   },
   labelInvalid: {
-    color: Colors.error500,
+    color: '#FF4900',
   },
   input: {
     paddingVertical: 8,
     paddingHorizontal: 6,
-    backgroundColor: Colors.primary100,
+    backgroundColor: '#ccc',
     borderRadius: 4,
     fontSize: 16,
   },

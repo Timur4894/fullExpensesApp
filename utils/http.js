@@ -29,3 +29,7 @@ export async function fetchExpenses(token) {
 
   return expenses;
 }
+
+export function deleteExpense(id, token){
+  return axios.delete(`${BACKEND_URL}/expenses/${id}.json?auth=${token}`)
+}

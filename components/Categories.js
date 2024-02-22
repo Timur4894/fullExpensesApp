@@ -9,22 +9,22 @@ const { width } = Dimensions.get("window");
 function Categories (){
   const navigation = useNavigation();
 
-  const categories = ["Food", "Housing", "Transport", "Health", "Enjoyment", "Other"];
+  const categories = ["Food🍔", "Housing🏡", "Transport🚕", "Health💊", "Entmt🎭", "Other💡"];
 
   // Функция для определения цвета кнопки в зависимости от категории
   const getCategoryColor = (category) => {
     switch (category) {
-      case "Food":
+      case "Food🍔":
         return "#7CFC00"; 
-      case "Housing":
+      case "Housing🏡":
         return "#CD853F"; // пастельно-коричневый
-      case "Transport":
+      case "Transport🚕":
         return "#6495ED"; // пастельно-синий
-      case "Health":
+      case "Health💊":
         return "#F0FFFF"; // пастельно-белый
-      case "Enjoyment":
+      case "Entmt🎭":
         return "#DA70D6"; // пастельно-фиолетовый
-      case "Other":
+      case "Other💡":
         return "#A9A9A9"; // пастельно-серый
       default:
         return "#ccc"; // по умолчанию серый
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontSize: 22,
     fontWeight: "bold",
-    color: 'white',
+    color: '#FF4900',
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
   button: {
     paddingVertical: 13,
     width: 160,
+    maxHeight: 70,
     paddingHorizontal: 30,
     marginVertical: 10,
     borderRadius: 5,
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontWeight: '600',
-    alignItems: "center",
+    marginLeft: 10
   },
 });
 

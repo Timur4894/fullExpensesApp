@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, ScrollView } from "react-native"
+import { ScrollView } from "react-native"
 import Total from "../components/Total";
 import Categories from "../components/Categories";
 import Expenses from "../components/Expenses";
@@ -7,8 +7,7 @@ import Expenses from "../components/Expenses";
 function MainScreen(){
     return(
         <ScrollView style={{
-            backgroundColor: '#373970',
-            color: 'white',
+            backgroundColor: '#333',
         }}>
             <Total/>
             <Categories/>
@@ -18,9 +17,6 @@ function MainScreen(){
 
 } 
 
-// const styles = StyleSheet.create({
-    
-// });
 
 
 export default MainScreen

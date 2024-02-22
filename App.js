@@ -8,7 +8,6 @@ import CategoryDetailsScreen from './screens/CategoryDetailsScreen'; // Новы
 import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import { Colors } from './constants/styles';
-import ExpenseDetails from './screens/ExpenseDetails'
 
 
 
@@ -18,12 +17,9 @@ function AuthStack() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: Colors.primary500 },
-        headerTintColor: 'white',
-        contentStyle: { backgroundColor: Colors.primary100 },
-      }}
-    >
-      <Stack.Screen name="Login" component={LoginScreen} />
+        headerShown: false,
+      }}>
+      <Stack.Screen name="Login" component={LoginScreen}/>
       <Stack.Screen name="Signup" component={SignupScreen} />
     </Stack.Navigator>
   );
@@ -35,8 +31,7 @@ function AuthenticatedStack() {
   return (
       <Stack.Navigator>
           <Stack.Screen name="MainScreen" component={MainScreen} options={{ headerShown: false, title: 'Back' }} />
-          <Stack.Screen name="CategoryDetails" component={CategoryDetailsScreen} options={{ title: 'Add Expense' }} />
-          <Stack.Screen name="ChangeExpense" component={ExpenseDetails} options={{ title: 'Change Expense' }} />
+          <Stack.Screen name="CategoryDetails" component={CategoryDetailsScreen} options={{ title: 'Add Expense', headerStyle: {backgroundColor: '#333'}, headerTintColor: '#FF4900' }} />
       </Stack.Navigator>
   );
 }

@@ -1,19 +1,41 @@
-import { StyleSheet, View, Text } from "react-native"
+import React, { useEffect, useState, useContext } from 'react';
+import { StyleSheet, View, Text } from "react-native";
+import { fetchExpenses } from '../utils/http';
+import { AuthContext } from '../store/auth-context';
 
 
+function Total() {
+    const [total, setTotal] = useState(0);
 
-function Total({ fetchedExpenses }){
+    const authCtx = useContext(AuthContext);
+    const token = authCtx.token;
 
-    //const totalAmount = fetchedExpenses.reduce((total, expense) => total + parseFloat(expense.amount), 0).toFixed(2);
+    useEffect(() => {
+        const fetchTotalExpenses = async () => {
+            try {
+                const expenses = await fetchExpenses(token);
+                let sum = 0;
+                
+                expenses.forEach(expense => {
+                    sum += parseFloat(expense.amount);
+                });
+                setTotal(sum);
+            } catch (error) {
+                console.error('Error fetching expenses:', error);
+            }
+        };
 
-    return(
+        fetchTotalExpenses();
+    }, [total])
+
+    return (
         <View style={styles.container}>
             <Text style={styles.monthText}>Summary</Text>
-            <Text style={styles.total}>$2882</Text>
+            <Text style={styles.total}>${total}</Text>
         </View>
-    )
+    );
+}
 
-} 
 
 const styles = StyleSheet.create({
     container: {
@@ -24,14 +46,13 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         fontSize: 17,
         fontWeight: 'bold',
-        color: 'white',
+        color: '#FF4900',
     },
     total: {
         fontSize: 50,
-        color: 'white',
+        color: '#FF4900',
         fontWeight: 'bold'
     },
 });
 
-
-export default Total
+export default Total;
