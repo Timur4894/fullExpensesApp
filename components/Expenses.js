@@ -92,7 +92,7 @@ function Expenses() {
             <View style={[styles.expenseInfo, {borderColor: getCategoryColor(expense.category), backgroundColor: getLighterColor(getCategoryColor(expense.category))}]}> 
               <Text style={styles.title}>{expense.description}</Text>
               <Text style={styles.category}>{formatDate(expense.date)}</Text>
-              <Text style={styles.amount}>Amount: ${expense.amount}</Text>
+              <Text style={styles.amount}>Amount: {expense.amount} zl</Text>
             </View>
           </Pressable>
         ))}
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     color: '#FF4900',
   },
   expenseInfo: {
-    height: 80,
+    height: 70,
     width: '100%',
     paddingHorizontal: 10,
     borderRadius: 8,
@@ -158,19 +158,19 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    marginTop: 10,
+    marginTop: '2%',
     fontWeight: 'bold',
   },
   category: {
     fontSize: 16,
     fontWeight: '500',
-    marginTop: '5%',
+    marginTop: '1%',
   },
   amount: {
     fontSize: 18,
     position: 'absolute',
     right: 20,
-    top: '37%',
+    marginTop: '2%',
     fontWeight: '600',
   },
   expenseScroll: {

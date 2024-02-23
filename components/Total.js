@@ -31,7 +31,7 @@ function Total() {
     return (
         <View style={styles.container}>
             <Text style={styles.monthText}>Summary</Text>
-            <Text style={styles.total}>${total}</Text>
+            <Text style={styles.total}>{total} zl </Text>
         </View>
     );
 }

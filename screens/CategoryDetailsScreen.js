@@ -77,6 +77,7 @@ function CategoryDetailsScreen({ route }) {
         value={amount}
         onChangeText={(text) => setAmount(text)}
         keyboardType="numeric"
+        maxLength={6}
       /> 
       <TextInput
         style={styles.input}
@@ -89,6 +90,7 @@ function CategoryDetailsScreen({ route }) {
         placeholder="Title..."
         value={description}
         onChangeText={(text) => setDescription(text)}
+        maxLength={12}
       />
 
       <View style={styles.buttons}>
